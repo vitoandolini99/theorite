@@ -1,4 +1,4 @@
-#Theorite
+# Theorite
 ## by Deniel Stájner
 ### school project for the Secondary Technical School of Electrical Engineering Jecna
 
