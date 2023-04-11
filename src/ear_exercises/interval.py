@@ -10,6 +10,10 @@ from vendor.rp import resource_path
 
 class Interval:
     def __init__(self, root):
+        """
+        Interval window object
+        :param root: tkinter window object
+        """
         with open(resource_path('profile/account.json')) as statistics:
             self.stats = json.loads(statistics.read())
 
@@ -220,6 +224,9 @@ class Interval:
         self.root.mainloop()
 
     def GButton_172_command(self):
+        """
+        Switch to Ear screen
+        """
         pygame.quit()
         for widget in self.root.winfo_children():
             widget.destroy()
@@ -227,6 +234,10 @@ class Interval:
         e = Ear(self.root)
 
     def submit(self, letter: str):
+        """
+        Submit interval
+        :param letter: Inteval clicked
+        """
         with open(resource_path("profile/account.json"), 'w') as st:
             self.stats["interval_ear"][1] += 1
             st.write(json.dumps(self.stats))
@@ -261,5 +272,8 @@ class Interval:
         self.GLabel_27.place(x=round(405 * self.coefficient), y=0, width=round(150 * self.coefficient), height=round(20 * self.coefficient))
 
     def play_audio(self):
+        """
+        Plays interval sound
+        """
         pygame.mixer.music.load(self.sound)
         pygame.mixer.music.play()

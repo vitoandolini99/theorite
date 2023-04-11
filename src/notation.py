@@ -7,6 +7,10 @@ from vendor.rp import resource_path
 
 class Notation:
     def __init__(self, root):
+        """
+        Notation screen object
+        :param root: tkinter window object
+        """
         with open(resource_path('profile/account.json')) as statistics:
             self.stats = json.loads(statistics.read())
 
@@ -94,12 +98,18 @@ class Notation:
         self.root.mainloop()
 
     def GButton_172_command(self):
+        """
+        Switch to Selection screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.selection import Selection
         s = Selection(self.root)
 
     def GButton_181_command(self):
+        """
+        Switch to Note screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.notation_exercises.note import Note
@@ -112,12 +122,18 @@ class Notation:
         i = Interval(self.root)
 
     def GButton_348_command(self):
+        """
+        Switch to Key signature screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.notation_exercises.key_signature import Key_signature
         k = Key_signature(self.root)
 
     def GButton_987_command(self):
+        """
+        Switch to Chord screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.notation_exercises.chords import Chord

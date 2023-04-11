@@ -9,6 +9,10 @@ import json
 
 class Interval:
     def __init__(self, root):
+        """
+        Interval
+        :param root:
+        """
         with open(resource_path('profile/account.json')) as statistics:
             self.stats = json.loads(statistics.read())
 

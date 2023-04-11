@@ -7,6 +7,10 @@ from src.dict.res_dict import resolution_dictionary
 
 class App:
     def __init__(self, root):
+        """
+        Main menu screen
+        :param root: tkinter window
+        """
         with open(resource_path('settings/settings.json')) as settings:
             self.data = json.loads(settings.read())
         self.root = root
@@ -71,15 +75,24 @@ class App:
         self.root.mainloop()
 
     def quit(self):
+        """
+        Quit window
+        """
         self.root.destroy()
 
     def GButton_636_command(self):
+        """
+        Switch to Selection screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.selection import Selection
         s = Selection(self.root)
 
     def prof(self):
+        """
+        Switch to Profile screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.profile import Profile

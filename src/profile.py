@@ -7,6 +7,10 @@ from vendor.rp import resource_path
 
 class Profile:
     def __init__(self, root):
+        """
+        Profile window object
+        :param root: tkinter window object
+        """
         with open(resource_path('profile/account.json')) as statistics:
             self.stats = json.loads(statistics.read())
 
@@ -171,12 +175,19 @@ class Profile:
         self.root.mainloop()
 
     def GButton_172_command(self):
+        """
+        Switch to App screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.app import App
         a = App(self.root)
 
     def reset(self, exercise: str):
+        """
+        Reset counter for exercise
+        :param exercise: Exercise in question
+        """
         with open(resource_path('profile/account.json'), 'w') as ex:
             self.stats[exercise] = [0, 0]
             ex.write(json.dumps(self.stats))

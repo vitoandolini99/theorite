@@ -7,6 +7,10 @@ from vendor.rp import resource_path
 
 class Selection:
     def __init__(self, root):
+        """
+        Selection screen window
+        :param root: tkinter window object
+        """
         self.root = root
         with open(resource_path('settings/settings.json')) as settings:
             self.data = json.loads(settings.read())
@@ -81,24 +85,36 @@ class Selection:
         self.root.mainloop()
 
     def GButton_666_command(self):
+        """
+        Switch to Settings screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.settings import Settings
         s = Settings(self.root)
 
     def GButton_605_command(self):
+        """
+        Switch to Ear screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.ear import Ear
         e = Ear(self.root)
 
     def GButton_890_command(self):
+        """
+        Switch to Notation screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.notation import Notation
         n = Notation(self.root)
 
     def GButton_172_command(self):
+        """
+        Switch to App screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.app import App

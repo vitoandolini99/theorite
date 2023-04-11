@@ -10,6 +10,10 @@ import pygame
 
 class Chord:
     def __init__(self, root):
+        """
+        Chord window object
+        :param root: tkinter window object
+        """
         with open(resource_path('profile/account.json')) as statistics:
             self.stats = json.loads(statistics.read())
 
@@ -211,6 +215,9 @@ class Chord:
         GButton_172["command"] = self.GButton_172_command
 
     def GButton_172_command(self):
+        """
+        Switch to Ear screen
+        """
         pygame.quit()
         for widget in self.root.winfo_children():
             widget.destroy()
@@ -218,6 +225,10 @@ class Chord:
         e = Ear(self.root)
 
     def submit(self, letter: str):
+        """
+        Submit chord
+        :param letter: Chord clicked
+        """
         with open(resource_path("profile/account.json"), 'w') as st:
             self.stats["chord_ear"][1] += 1
             st.write(json.dumps(self.stats))
@@ -253,5 +264,8 @@ class Chord:
         self.GLabel_27.place(x=round(405 * self.coefficient), y=0, width=round(150 * self.coefficient), height=round(20 * self.coefficient))
 
     def play_audio(self):
+        """
+        Play audio button (plays current chord)
+        """
         pygame.mixer.music.load(self.sound)
         pygame.mixer.music.play()

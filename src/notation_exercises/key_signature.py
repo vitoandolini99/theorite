@@ -9,6 +9,10 @@ from vendor.rp import resource_path
 
 class Key_signature:
     def __init__(self, root):
+        """
+        Key signature window object
+        :param root: tkinter window object
+        """
         with open(resource_path('settings/settings.json')) as settings:
             self.data = json.loads(settings.read())
         with open(resource_path('profile/account.json')) as statistics:
@@ -307,12 +311,20 @@ class Key_signature:
         self.root.mainloop()
 
     def GButton_172_command(self):
+        """
+        Switch to Notation screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.notation import Notation
         n = Notation(self.root)
 
     def submit(self, letter: str, mde: str):
+        """
+        Submit answer for evaluation
+        :param letter: Note clicked by user
+        :param mde: Mode displayed on screen
+        """
         with open(resource_path("profile/account.json"), 'w') as st:
             self.stats["key_note"][1] += 1
             st.write(json.dumps(self.stats))

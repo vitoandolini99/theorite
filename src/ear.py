@@ -7,6 +7,10 @@ from vendor.rp import resource_path
 
 class Ear:
     def __init__(self, root):
+        """
+        Ear window object
+        :param root: tkinter window object
+        """
         with open(resource_path('settings/settings.json')) as settings:
             self.data = json.loads(settings.read())
         self.root = root
@@ -91,30 +95,45 @@ class Ear:
         self.root.mainloop()
 
     def GButton_172_command(self):
+        """
+        Switch to Selection screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.selection import Selection
         s = Selection(self.root)
 
     def GButton_181_command(self):
+        """
+        Switch to Note screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.ear_exercises.note import Note
         n = Note(self.root)
 
     def GButton_257_command(self):
+        """
+        Switch to Interval screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.ear_exercises.interval import Interval
         i = Interval(self.root)
 
     def GButton_348_command(self):
+        """
+        Switch to Scale screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.ear_exercises.scale import Scale
         s = Scale(self.root)
 
     def GButton_987_command(self):
+        """
+        Switch to Chord screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.ear_exercises.chord import Chord

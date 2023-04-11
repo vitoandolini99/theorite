@@ -9,6 +9,10 @@ from vendor.rp import resource_path
 
 class Chord:
     def __init__(self, root):
+        """
+        Chord notation window object
+        :param root: tkinter window object
+        """
         with open(resource_path('settings/settings.json')) as settings:
             self.data = json.loads(settings.read())
         with open(resource_path('profile/account.json')) as statistics:
@@ -205,12 +209,19 @@ class Chord:
         GButton_172["command"] = self.GButton_172_command
 
     def GButton_172_command(self):
+        """
+        Switch to Notation screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.notation import Notation
         n = Notation(self.root)
 
     def submit(self, ch):
+        """
+        Submit chord for evaluation of response
+        :param ch: chord clicked
+        """
         with open(resource_path("profile/account.json"), 'w') as st:
             self.stats["chord_note"][1] += 1
             st.write(json.dumps(self.stats))

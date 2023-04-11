@@ -1,6 +1,5 @@
 import tkinter as tk
 from PIL import Image, ImageTk
-
 from src.dict.res_dict import resolution_dictionary
 from vendor.rp import resource_path
 import json
@@ -8,6 +7,10 @@ import json
 
 class Settings:
     def __init__(self, root):
+        """
+        Settings window object
+        :param root: tkinter window object
+        """
         with open(resource_path('profile/account.json')) as statistics:
             self.stats = json.loads(statistics.read())
 
@@ -148,12 +151,18 @@ class Settings:
         self.root.mainloop()
 
     def GButton_172_command(self):
+        """
+        Switch to Selection screen
+        """
         for widget in self.root.winfo_children():
             widget.destroy()
         from src.selection import Selection
         s = Selection(self.root)
 
     def fullscreen(self):
+        """
+        Toggle between Fullscreen and 960x540
+        """
         if self.checkbutton_var4.get():
             with open(resource_path("settings/settings.json"), 'w') as st:
                 self.data['resolution'] = 'fullscreen'
@@ -168,6 +177,9 @@ class Settings:
         main(True)
 
     def europe_notation(self):
+        """
+        Toggle between european notation and western notation
+        """
         if self.checkbutton_var.get():
             with open(resource_path("settings/settings.json"), 'w') as st:
                 self.data['european_notation'] = True
@@ -178,6 +190,9 @@ class Settings:
                 st.write(json.dumps(self.data))
 
     def modes(self):
+        """
+        Enable modes on Key signature exercise
+        """
         if self.checkbutton_var2.get():
             with open(resource_path("settings/settings.json"), 'w') as st:
                 self.data['modes'] = True
@@ -188,6 +203,9 @@ class Settings:
                 st.write(json.dumps(self.data))
 
     def middle_c(self):
+        """
+        Toggle middle C4 for Note ear exercise
+        """
         if self.checkbutton_var3.get():
             with open(resource_path("settings/settings.json"), 'w') as st:
                 self.data['middle_c'] = True
