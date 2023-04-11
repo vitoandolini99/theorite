@@ -18,7 +18,7 @@ def ondelete():
 
     with open(resource_path('settings/settings.json')) as settings:
         dt = json.dumps(settings.read())
-    mycursor.execute(f"update Bomboclaat set stngs='{dt}', acc='{st}' where mac_addr='{mac_address_hex}';")
+    mycursor.execute(f"update bomboclaat set stngs='{dt}', acc='{st}' where mac_addr='{mac_address_hex}';")
     mydb.commit()
 
 
